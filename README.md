@@ -1,6 +1,6 @@
 # kube-openapi-explorer
 
-🔎 A lightweight Go tool to explore and inspect the Kubernetes OpenAPI schema directly from a running cluster.
+A lightweight Go tool to explore and inspect the Kubernetes OpenAPI schema directly from a running cluster.
 
 This project connects to a Kubernetes cluster using your kubeconfig and dynamically retrieves the API schema exposed by the Kubernetes API server (`/openapi/v3`).
 
@@ -8,7 +8,7 @@ It helps developers, platform engineers, and operator authors understand Kuberne
 
 ---
 
-## ✨ Features
+## Features
 
 - Discover Kubernetes APIs dynamically
 - Fetch OpenAPI v3 schema from live clusters
@@ -31,23 +31,27 @@ Kubernetes exposes its entire API surface via OpenAPI, but:
 
 ---
 
-## 🧠 How it works
+## How it works
 
 ```
 Kubernetes API Server
         ↓
-/openapi/v3 endpoint
+/openapi/v3 (live schema)
         ↓
-client-go discovery client
+Go program (client-go discovery)
         ↓
-kube-openapi-explorer
+OpenAPI JSON aggregation
+        ↓
+Swagger UI server
+        ↓
+http://localhost:8080/docs
 ```
 
 The tool authenticates using your local kubeconfig and queries the API server securely.
 
 ---
 
-## 📦 Installation
+## Installation
 
 ```bash
 git clone https://github.com/gaurangkudale/kube-openapi-explorer.git
@@ -97,7 +101,7 @@ Future versions will support:
 
 ---
 
-## 🏗 Use Cases
+## Use Cases
 
 - Kubernetes Operator development
 - CRD validation debugging
@@ -107,7 +111,7 @@ Future versions will support:
 
 ---
 
-## 📚 Related Kubernetes Concepts
+## Related Kubernetes Concepts
 
 - Kubernetes API Discovery
 - OpenAPI v3 Specification
